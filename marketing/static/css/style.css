@@ -285,3 +285,43 @@ footer {
         border-bottom: 1px solid #444;
     }
 }
+
+/* Ẩn menu mặc định trên mobile */
+@media (max-width: 768px) {
+    .right-section {
+        display: none;
+        flex-direction: column;
+        background-color: #333;
+        padding: 1rem;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        z-index: 999;
+    }
+
+    .right-section.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+        background: none;
+        font-size: 24px;
+        border: none;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+/* Hiển thị đầy đủ trên desktop */
+@media (min-width: 769px) {
+    .hamburger {
+        display: none;
+    }
+
+    .right-section {
+        display: flex !important;
+        flex-direction: row;
+        align-items: center;
+    }
+}
