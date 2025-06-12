@@ -14,9 +14,10 @@
             <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo hệ thống marketing" height="50" />
         </a>
 
-        <!-- Hamburger Icon -->
-        <button class="hamburger" onclick="toggleMenu()">☰</button>
+        <!-- Hamburger Icon (đặt ngoài phần bị ẩn) -->
+        <button class="hamburger" onclick="toggleMenu()" aria-label="Mở menu điều hướng">☰</button>
 
+        <!-- Navigation Section -->
         <div class="right-section" id="navbar">
             <nav class="main-nav">
                 <a href="{{ url_for('index') }}">Trang chủ</a>
