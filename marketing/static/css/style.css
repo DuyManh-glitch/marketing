@@ -202,8 +202,6 @@ footer {
     font-style: italic;
 }
 
-/* ===== MENU BA GẠCH RESPONSIVE ===== */
-
 .hamburger {
     display: none;
     font-size: 28px;
@@ -211,20 +209,18 @@ footer {
     border: none;
     color: white;
     cursor: pointer;
-    z-index: 1001;
+    z-index: 1000;
+    position: relative;
 }
 
-/* Mặc định hiển thị menu ngang khi đủ rộng */
-.right-section {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-}
-
-/* RESPONSIVE MENU cho màn hình nhỏ */
+/* Responsive menu hiển thị */
 @media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
     .right-section {
-        display: none !important;
+        display: none;
         flex-direction: column;
         align-items: flex-start;
         background: rgba(0, 0, 0, 0.95);
@@ -237,27 +233,20 @@ footer {
     }
 
     .right-section.show {
-        display: flex !important;
+        display: flex;
     }
 
-    .main-nav,
-    .user-menu {
+    .main-nav, .user-menu {
         flex-direction: column;
         align-items: flex-start;
+        gap: 10px;
         width: 100%;
     }
 
-    .main-nav a,
-    .user-menu a,
-    .user-menu span {
-        display: block;
-        width: 100%;
+    .main-nav a, .user-menu a, .user-menu span {
         padding: 10px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        width: 100%;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
         font-size: 18px;
-    }
-
-    .hamburger {
-        display: block;
     }
 }
