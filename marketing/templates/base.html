@@ -6,30 +6,14 @@
     <title>{% block title %}Marketing System{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 </head>
-    
-<script>
-    function toggleMenu() {
-        var navbar = document.getElementById("navbar");
-        navbar.classList.toggle("active");
-    }
-</script>
-
 <body>
 
 <header>
     <div class="container header-flex">
-        <!-- Logo -->
-        <div class="logo">
-            <a href="{{ url_for('index') }}">
-                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" />
-            </a>
-        </div>
-
-        <!-- Hamburger -->
-        <button class="hamburger" onclick="toggleMenu()">☰</button>
-
-        <!-- Navigation + User -->
-        <div class="right-section" id="navbar">
+        <a href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" height="50" />
+        </a>
+        <div class="right-section">
             <nav class="main-nav">
                 <a href="{{ url_for('index') }}">Trang chủ</a>
                 <a href="{{ url_for('campaign') }}">Chiến dịch</a>
@@ -38,7 +22,6 @@
                 <a href="{{ url_for('stats') }}">Thống kê</a>
                 <a href="{{ url_for('contact') }}">Liên hệ</a>
             </nav>
-
             <div class="user-menu">
                 {% if session.get('username') %}
                     <span>Xin chào, {{ session['username'] }}</span>
