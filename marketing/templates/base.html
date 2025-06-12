@@ -11,14 +11,9 @@
 <header>
     <div class="container header-flex">
         <a href="{{ url_for('index') }}">
-            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo hệ thống marketing" height="50" />
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" height="50" />
         </a>
-
-        <!-- Hamburger Icon (đặt ngoài phần bị ẩn) -->
-        <button class="hamburger" onclick="toggleMenu()" aria-label="Mở menu điều hướng">☰</button>
-
-        <!-- Navigation Section -->
-        <div class="right-section" id="navbar">
+        <div class="right-section">
             <nav class="main-nav">
                 <a href="{{ url_for('index') }}">Trang chủ</a>
                 <a href="{{ url_for('campaign') }}">Chiến dịch</a>
@@ -27,7 +22,6 @@
                 <a href="{{ url_for('stats') }}">Thống kê</a>
                 <a href="{{ url_for('contact') }}">Liên hệ</a>
             </nav>
-
             <div class="user-menu">
                 {% if session.get('username') %}
                     <span>Xin chào, {{ session['username'] }}</span>
@@ -53,20 +47,13 @@
             </ul>
         {% endif %}
     {% endwith %}
-
+    
     {% block content %}{% endblock %}
 </main>
 
 <footer>
     <p>&copy; 2025 DUY MẠNH.DG</p>
 </footer>
-
-<script>
-    function toggleMenu() {
-        const navbar = document.getElementById('navbar');
-        navbar.classList.toggle('show');
-    }
-</script>
 
 </body>
 </html>
