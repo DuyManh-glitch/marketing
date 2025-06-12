@@ -214,21 +214,17 @@ footer {
     z-index: 1001;
 }
 
-/* Mặc định menu hiển thị dạng flex ngang */
+/* Mặc định hiển thị menu ngang khi đủ rộng */
 .right-section {
     display: flex;
     gap: 20px;
     align-items: center;
 }
 
-/* Responsive: Khi màn hình nhỏ */
+/* RESPONSIVE MENU cho màn hình nhỏ */
 @media (max-width: 768px) {
-    .hamburger {
-        display: block;
-    }
-
     .right-section {
-        display: none; /* Ẩn menu ban đầu */
+        display: none !important;
         flex-direction: column;
         align-items: flex-start;
         background: rgba(0, 0, 0, 0.95);
@@ -241,20 +237,27 @@ footer {
     }
 
     .right-section.show {
-        display: flex; /* Hiện menu khi có class 'show' */
+        display: flex !important;
     }
 
-    .main-nav, .user-menu {
+    .main-nav,
+    .user-menu {
         flex-direction: column;
         align-items: flex-start;
-        gap: 10px;
         width: 100%;
     }
 
-    .main-nav a, .user-menu a, .user-menu span {
-        padding: 10px 0;
+    .main-nav a,
+    .user-menu a,
+    .user-menu span {
+        display: block;
         width: 100%;
-        border-bottom: 1px solid rgba(255,255,255,0.2);
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         font-size: 18px;
+    }
+
+    .hamburger {
+        display: block;
     }
 }
