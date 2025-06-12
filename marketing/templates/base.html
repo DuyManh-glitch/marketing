@@ -6,6 +6,14 @@
     <title>{% block title %}Marketing System{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 </head>
+    
+<script>
+    function toggleMenu() {
+        var navbar = document.getElementById("navbar");
+        navbar.classList.toggle("active");
+    }
+</script>
+
 <body>
 
 <header>
