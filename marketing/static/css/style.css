@@ -202,7 +202,8 @@ footer {
     font-style: italic;
 }
 
-/* Biểu tượng ba gạch */
+/* ===== MENU BA GẠCH RESPONSIVE ===== */
+
 .hamburger {
     display: none;
     font-size: 28px;
@@ -213,51 +214,47 @@ footer {
     z-index: 1001;
 }
 
-/* Desktop: menu bình thường */
+/* Mặc định menu hiển thị dạng flex ngang */
 .right-section {
     display: flex;
     gap: 20px;
     align-items: center;
-    transition: all 0.3s ease;
 }
 
-/* Mobile styles */
+/* Responsive: Khi màn hình nhỏ */
 @media (max-width: 768px) {
     .hamburger {
         display: block;
     }
 
     .right-section {
-        display: none;
+        display: none; /* Ẩn menu ban đầu */
         flex-direction: column;
+        align-items: flex-start;
         background: rgba(0, 0, 0, 0.95);
         position: absolute;
         top: 60px;
         right: 0;
         width: 100%;
         padding: 20px;
-        box-shadow: 0 8px 15px rgba(0,0,0,0.3);
         z-index: 999;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease;
     }
 
     .right-section.show {
-        display: flex;
-        max-height: 500px;
+        display: flex; /* Hiện menu khi có class 'show' */
     }
 
     .main-nav, .user-menu {
         flex-direction: column;
         align-items: flex-start;
+        gap: 10px;
         width: 100%;
     }
 
     .main-nav a, .user-menu a, .user-menu span {
         padding: 10px 0;
         width: 100%;
-        font-size: 17px;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        font-size: 18px;
     }
 }
