@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Chiến dịch Marketing{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  <section class="campaign-section" id="promo1">
+    <h2>Khuyến mãi 1</h2>
+    <div class="campaign-content">
+      <img src="{{ url_for('static', filename='images/promo1.jpg') }}" alt="Giảm giá 50%" class="campaign-img" />
+      <div class="campaign-text">
+        <p>Giảm giá 50% cho đơn hàng đầu tiên</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="campaign-section" id="promo2">
+    <h2>Khuyến mãi 2</h2>
+    <div class="campaign-content">
+      <img src="{{ url_for('static', filename='images/promo2.jpg') }}" alt="tặng phiếu giảm giá từ 100k-500k" class="campaign-img" />
+      <div class="campaign-text">
+        <p>tặng phiếu giảm giá từ 100k-500k</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="campaign-section" id="promo3">
+    <h2>Khuyến mãi 3</h2>
+    <div class="campaign-content">
+      <img src="{{ url_for('static', filename='images/promo3.jpg') }}" alt="Miễn phí giao hàng" class="campaign-img" />
+      <div class="campaign-text">
+        <p>Miễn phí giao hàng khi mua onlineonline</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Đăng ký{% endblock %}
+{% block content %}
+<h2>Đăng ký tài khoản</h2>
+<form method="POST">
+    <label>Tên đăng nhập:</label><br>
+    <input type="text" name="username" required><br><br>
+    <label>Email:</label><br>
+    <input type="email" name="email" required><br><br>
+    <label>Mật khẩu:</label><br>
+    <input type="password" name="password" required><br><br>
+    <button type="submit">Đăng ký</button>
+</form>
+{% endblock %}

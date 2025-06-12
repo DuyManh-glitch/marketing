@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Giỏ hàng{% endblock %}
+{% block content %}
+<h2>Giỏ hàng của bạn</h2>
+{% if items %}
+<table>
+    <thead>
+        <tr><th>Sản phẩm</th><th>Giá</th><th>Số lượng</th><th>Thao tác</th></tr>
+    </thead>
+    <tbody>
+    {% for item in items %}
+        <tr>
+            <td>{{ item['name'] }}</td>
+            <td>{{ item['price']|round(0) }}₫</td>
+            <td>{{ item['quantity'] }}</td>
+            <td>
+                <form action="{{ url_for('remove_from_cart', item_id=item['id']) }}" method="post" style="display:inline;">
+                     <button type="submit" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này khỏi giỏ?');">Xóa</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<a href="{{ url_for('checkout') }}">Thanh toán</a>
+{% else %}
+<p>Giỏ hàng trống.</p>
+{% endif %}
+{% endblock %}

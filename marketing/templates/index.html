@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Trang chủ{% endblock %}
+
+{% block content %}
+  <section id="homepage-sections">
+    <div class="section" id="home">
+      <h1>Chào mừng đến với Đồ Gia Dụng DUY MẠNH</h1>
+      <p>Chuyên cung cấp đồ gia dụng chất lượng cao, hiện đại và tiện ích.</p>
+    </div>
+
+    <div class="section" id="campaign">
+      <h2>Chiến dịch nổi bật</h2>
+      <ul>
+        <li>Giảm 15% cho khách hàng mới</li>
+        <li>Mua bộ sản phẩm tặng bộ vệ sinh miễn phí</li>
+        <li>Giao hàng miễn phí toàn quốc</li>
+      </ul>
+    </div>
+
+    <div class="section" id="promotion">
+      <h2>Khuyến mãi</h2>
+      <ul>
+        <li>Tặng phiếu quà tặng 200k khi mua đơn trên 2 triệu</li>
+        <li>Ưu đãi đặc biệt cho khách hàng thân thiết</li>
+      </ul>
+    </div>
+
+    <div class="section" id="new-products">
+      <h2>Sản phẩm mới</h2>
+      <div class="product-list">
+        {% for product in new_products %}
+          <div class="product-item">
+            <img src="{{ url_for('static', filename='images/' + product.image) }}" alt="{{ product.name }}">
+            <h3>{{ product.name }}</h3>
+            <p>Giá: {{ product.price }}₫</p>
+          </div>
+        {% else %}
+          <p>Chưa có sản phẩm mới.</p>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="section" id="about">
+      <h2>Giới thiệu</h2>
+      <p>Chúng tôi cung cấp các sản phẩm đồ gia dụng đa dạng, phục vụ cho nhu cầu gia đình và công nghiệp, cam kết chất lượng, giá tốt và dịch vụ tận tâm.</p>
+    </div>
+  </section>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Phản hồi{% endblock %}
+{% block content %}
+<h2>Phản hồi của khách hàng</h2>
+<ul>
+    {% for fb in feedbacks %}
+    <li>
+        <strong>{{ fb['username'] }}</strong>: {{ fb['content'] }} <em>({{ fb['created_at'] }})</em>
+    </li>
+    {% endfor %}
+</ul>
+
+{% if session.get('username') %}
+<form method="POST">
+    <textarea name="content" rows="4" cols="50" required placeholder="Viết phản hồi của bạn..."></textarea><br>
+    <button type="submit">Gửi phản hồi</button>
+</form>
+{% else %}
+<p><a href="{{ url_for('login') }}">Đăng nhập</a> để gửi phản hồi.</p>
+{% endif %}
+{% endblock %}

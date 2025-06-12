@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Chi tiết sản phẩm{% endblock %}
+{% block content %}
+<h1>{{ product.name }}</h1>
+<img src="{{ url_for('static', filename=product.image_url.replace('static/', '')) }}" alt="{{ product.name }}" width="300" />
+<p><strong>Mô tả:</strong> {{ product.description }}</p>
+<p><strong>Giá:</strong> {{ "{:,}".format(product.price) }} VND</p>
+<p><strong>Danh mục:</strong> {{ product.category }}</p>
+
+<form method="POST" action="{{ url_for('add_to_cart', product_id=product.id) }}">
+    <label for="quantity">Số lượng:</label>
+    <input type="number" id="quantity" name="quantity" value="1" min="1" />
+    <button type="submit">Thêm vào giỏ hàng</button>
+</form>
+
+<a href="{{ url_for('products') }}">Quay lại danh sách sản phẩm</a>
+{% endblock %}

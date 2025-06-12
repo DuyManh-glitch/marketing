@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Thống kê mua hàng{% endblock %}
+{% block content %}
+<h2>Thống kê mua hàng của bạn</h2>
+
+<p><strong>Tổng số đơn hàng:</strong> {{ total_orders }}</p>
+<p><strong>Tổng tiền đã chi:</strong> {{ total_spent|default(0)|round(0) }}₫</p>
+
+<h3>Sản phẩm đã mua (theo số lượng)</h3>
+{% if bought_products %}
+<ul>
+    {% for product in bought_products %}
+    <li>{{ product['name'] }} — <strong>{{ product['total_quantity'] }}</strong> sản phẩm</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Bạn chưa mua sản phẩm nào.</p>
+{% endif %}
+{% endblock %}

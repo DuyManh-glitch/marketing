@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Sản phẩm{% endblock %}
+
+{% block content %}
+<h1>Danh sách sản phẩm</h1>
+
+<!-- Bộ lọc danh mục -->
+<div style="margin-bottom: 20px;">
+    <strong>Lọc theo danh mục:</strong>
+    <a href="{{ url_for('products') }}"
+       {% if not current_category_id %}style="font-weight:bold"{% endif %}>Tất cả</a>
+    {% for cat in categories %}
+        <a href="{{ url_for('products', category=cat.id) }}"
+           {% if current_category_id == cat.id %}style="font-weight:bold"{% endif %}>
+           {{ cat.name }}
+        </a>
+    {% endfor %}
+</div>
+
+<!-- Danh sách sản phẩm -->
+<ul style="list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 20px;">
+    {% for p in products %}
+    <li style="border: 1px solid #ccc; padding: 10px; width: 250px;">
+        <a href="{{ url_for('product_detail', product_id=p.id) }}" style="text-decoration: none; color: inherit;">
+            <img src="{{ url_for('static', filename=p.image_url.replace('static/', '')) }}"
+                 alt="{{ p.name }}" style="max-width:100%; height:auto;" />
+            <h3>{{ p.name }}</h3>
+            <p>{{ p.description }}</p>
+            <p><strong>Giá:</strong> {{ "{:,}".format(p.price) }} VND</p>
+            <p><em>Danh mục: {{ p.category_name }}</em></p>
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

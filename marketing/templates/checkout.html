@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Thanh toán{% endblock %}
+
+{% block content %}
+<h2>Thanh toán</h2>
+
+<form method="POST" action="{{ url_for('checkout') }}">
+    <table border="1" cellpadding="8" cellspacing="0" style="width: 100%; max-width: 800px;">
+        <thead>
+            <tr>
+                <th>Sản phẩm</th>
+                <th>Giá</th>
+                <th>Số lượng</th>
+                <th>Thành tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+            {% set item_total = item['price'] * item['quantity'] %}
+            <tr>
+                <td>{{ item['name'] }}</td>
+                <td>{{ "{:,.0f}".format(item['price']) }}₫</td>
+                <td>{{ item['quantity'] }}</td>
+                <td>{{ "{:,.0f}".format(item_total) }}₫</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <p><strong>Tổng cộng: {{ "{:,.0f}".format(total) }}₫</strong></p>
+
+    <h3>Thông tin khách hàng</h3>
+    <label for="customer_name">Họ và tên:</label><br>
+    <input type="text" id="customer_name" name="customer_name" required
+           value="{{ customer_name if customer_name is defined else '' }}"><br><br>
+
+    <label for="address">Địa chỉ:</label><br>
+    <textarea id="address" name="address" required>{{ address if address is defined else '' }}</textarea><br><br>
+
+    <label for="phone">Số điện thoại:</label><br>
+    <input type="text" id="phone" name="phone" required
+           value="{{ phone if phone is defined else '' }}"><br><br>
+
+    <label for="payment_method">Phương thức thanh toán:</label><br>
+    <select id="payment_method" name="payment_method">
+        <option value="Giao tiền khi nhận hàng" {% if payment_method == 'Giao tiền khi nhận hàng' %}selected{% endif %}>Giao tiền khi nhận hàng</option>
+    </select><br><br>
+
+    <button type="submit">Xác nhận thanh toán</button>
+</form>
+
+{% endblock %}
